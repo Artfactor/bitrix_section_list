@@ -6,8 +6,12 @@ if(!isset($arParams["CACHE_TIME"]))
 if(!$arParams["CACHE_FILTER"] && count($arrFilter)>0)
 	$arParams["CACHE_TIME"] = 0;
 
+//Все что находится в этом if кешируется
 if ($this->StartResultCache())
 {
+
+  CModule::IncludeModule("iblock");
+
   $arIblocks = Array();
 
   $iblockList = CIBlock::GetList(
@@ -21,6 +25,8 @@ if ($this->StartResultCache())
   {
     $arIblocks[] =  $iblockParams;
   }
+
+  $arResult['IBLOCKS'] = $arIblocks;
 
   $arResult['SECTIONS'] = Array();
   foreach($arIblocks as $arIblock){
@@ -44,3 +50,4 @@ if ($this->StartResultCache())
    $this->IncludeComponentTemplate();
 }
 ?>
+
