@@ -37,6 +37,12 @@ $arComponentParameters = array(
 			"ADDITIONAL_VALUES"=>"N",
 			"REFRESH" => "Y",
 		),
+		"SECTIONS_COUNT" => array(
+			"PARENT" => "BASE",
+			"NAME" => GetMessage("T_IBLOCK_DESC_LIST_CONT"),
+			"TYPE" => "STRING",
+			"DEFAULT" => "20",
+		),
 		"SORT_BY1" => array(
 			"PARENT" => "SORT",
 			"NAME" => GetMessage("T_IBLOCK_DESC_IBORD1"),
@@ -71,5 +77,14 @@ $arComponentParameters = array(
 		),
 		"CACHE_TIME"  =>  Array("DEFAULT"=>36000000),
 	),
+);
+
+CIBlockParameters::AddPagerSettings(
+	$arComponentParameters,
+	GetMessage("T_IBLOCK_DESC_PAGER_NEWS"), //$pager_title
+	true, //$bDescNumbering
+	true, //$bShowAllParam
+	true, //$bBaseLink
+	$arCurrentValues["PAGER_BASE_LINK_ENABLE"]==="Y" //$bBaseLinkEnabled
 );
 ?>
